@@ -1,5 +1,71 @@
 # Getting Started with Create React App
 
+
+{Pequeña descripción de componentes}
+
+¿Componentes de clase o funcionales?
+
+¿Qué es un componente de clase?
+Un componente de clase es una clase de javascript que extiende la clase Component de React.
+class Biology extends React.Component
+Este nos permite guardar su estado y controlar lo que ocurre durante su ciclo de vida, exponiéndonos métodos como componentDidMount o componentWillUnmount.
+
+¿Cómo se ve un componente de clase?
+class Biology extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            professor: "Franco Cuarterolo"
+            students: props.numberOfStudents
+        }
+    }
+
+    componentDidMount(){
+        this.startAssignment()
+    }
+
+    componentWillUnmount(){
+        this.finishAssignment()
+    }
+
+    render(){
+        return(
+        <div> Biology, Professor: {this.state.professor} </div>
+        )
+    }
+
+}
+Qué es un componente funcional?
+
+
+Un componente funcional es una función que recibe el objeto Props y retorna un ReactNode (un ReactNode puede ser un elemento html, un string, un booleano, entre otros tipos de datos.).
+const Biology = (props) => { return(<ReactNode />) }
+Estas funciones solo reciben y retornan, por eso tienen que utilizar React Hooks (useState para el estado, useEffect para los ciclos de vida) para imitar las cualidades de un componente de clase.
+
+¿Cómo se ve un componente funcional?
+const Biology = (props) => {
+    const [professor, setProfessor] = React.useState("Franco Cuarterolo");
+    const [students, setStudents] = React.useState(props.numberOfStudents);
+
+    React.useEffect(()=>{
+            startAssignment()
+            return () => {
+                finishAssignment()
+            }
+        })
+
+    return <div> Biology, Professor: {professor} </div>
+}
+¿Por qué usar funciones por encima de clases?
+El frontend está experimentando una fuerte influencia de los lenguajes de programación funcionales, y esto nos lleva a integrar practicas del paradigma funcional en nuestro día a día.
+Ayuda a unificar criterios, donde todos los componentes tienen la misma estructura.
+Nos ahorra entender un concepto que está en camino al desuso en Javascript (Clases), aligerando la curva de aprendizaje
+Hacer testing de un componente funcional suele ser más sencillo.
+Suelen requerir menos lineas de código haciendolo más facil de entender.
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
